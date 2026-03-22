@@ -3,7 +3,7 @@ import { Effect } from "effect";
 class DownloadError { readonly _tag = "DownloadError"; constructor(readonly message: string) {} }
 class FileSystemError { readonly _tag = "FileSystemError"; constructor(readonly message: string) {} }
 
-const GITHUB_RELEASE_URL = "https://github.com/waldmatias/kalien-test/releases/download/v0.1";
+const GITHUB_RELEASE_URL = "https://github.com/Ben-Platform/kalienator/releases/download/v0.1";
 
 const runAsMain = <A, E>(effect: Effect.Effect<A, E, never>) => 
     Effect.runPromise(effect).then(
