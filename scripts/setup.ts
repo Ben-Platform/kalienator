@@ -19,6 +19,7 @@ const setupMiner = Effect.gen(function* () {
     const binaryName = os === "windows" ? "kalien.exe" : "kalien";
     const downloadUrl = `${GITHUB_RELEASE_URL}/${binaryName}`;
     const targetDir = "./bin";
+    const tapesDir = `${targetDir}/tapes`;
     const targetPath = `${targetDir}/${binaryName}`;
 
     const exists = yield* Effect.promise(() => 
@@ -32,7 +33,10 @@ const setupMiner = Effect.gen(function* () {
     yield* Effect.logInfo(`Starting setup for ${os}...`);
 
     yield* Effect.tryPromise({
-        try: () => Deno.mkdir(targetDir, { recursive: true }),
+        try: () =>  Promise.all([
+                Deno.mkdir(targetDir, { recursive: true }),
+                Deno.mkdir(tapesDir, { recursive: true }),
+            ]),
         catch: (e) => new FileSystemError(`Failed to create directory: ${e}`)
     });
 
