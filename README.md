@@ -1,4 +1,4 @@
-# Kalienator
+# Kalienator [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ben-platform/kalienator)
 
 
 ## Overview
